@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Local data and secrets
+.env
+.streamlit/secrets.toml
+data/*.csv
+data/*.parquet
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
