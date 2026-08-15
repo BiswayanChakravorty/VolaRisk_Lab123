@@ -28,7 +28,10 @@ vola-risk-lab/
 │       ├── basic_risk.py    # Log returns, volatility, beta, drawdown
 │       ├── dynamics.py      # GARCH(1,1) conditional variance
 │       └── state_space.py   # Kalman filter beta estimator
+├── docs/                    # GitHub and app deployment instructions
 ├── tests/                   # Unit tests for analytics engines
+├── Makefile                 # Common local commands
+├── pyproject.toml           # Test configuration
 ├── requirements.txt         # Runtime and test dependencies
 └── README.md
 ```
@@ -96,8 +99,9 @@ cd vola-risk-lab
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-pytest
-streamlit run src/dashboard.py
+make compile
+make test
+make run
 ```
 
 ## Suggested LinkedIn positioning
@@ -110,3 +114,16 @@ streamlit run src/dashboard.py
 - Add portfolio-level risk attribution and marginal contribution to risk.
 - Add CSV upload support to the dashboard.
 - Add a research notebook comparing static rolling beta vs. Kalman beta.
+
+
+## Deploy to your GitHub repo
+
+This workspace is ready to publish once a GitHub remote is connected:
+
+```bash
+git remote add origin https://github.com/<your-user>/VolaRisk_Lab123.git
+git branch -M main
+git push -u origin main
+```
+
+See the full deployment checklist in [`docs/GITHUB_DEPLOYMENT.md`](docs/GITHUB_DEPLOYMENT.md).
