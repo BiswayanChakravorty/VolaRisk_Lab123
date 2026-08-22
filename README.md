@@ -104,9 +104,6 @@ make test
 make run
 ```
 
-## Suggested LinkedIn positioning
-
-> Built VolaRisk Lab, a Python-based quantitative risk engine implementing vectorized drawdown analytics, GARCH(1,1) volatility modeling, and Kalman-filter beta estimation, with tests and CI for reproducible finance research.
 
 ## Roadmap
 
@@ -115,15 +112,3 @@ make run
 - Add CSV upload support to the dashboard.
 - Add a research notebook comparing static rolling beta vs. Kalman beta.
 
-
-## Deploy to your GitHub repo
-
-This workspace is ready to publish once a GitHub remote is connected:
-
-```bash
-git remote add origin https://github.com/<your-user>/VolaRisk_Lab123.git
-git branch -M main
-git push -u origin main
-```
-
-See the full deployment checklist in [`docs/GITHUB_DEPLOYMENT.md`](docs/GITHUB_DEPLOYMENT.md).
