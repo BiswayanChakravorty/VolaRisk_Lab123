@@ -4,13 +4,18 @@ from __future__ import annotations
 
 import numpy as np
 import pandas as pd
+import logging
+
+from src.config import GARCH_ALPHA, GARCH_BETA, GARCH_OMEGA
+
+logger = logging.getLogger(__name__)
 
 
 def garch_11_variance(
     returns: pd.Series,
-    omega: float = 0.000001,
-    alpha: float = 0.08,
-    beta: float = 0.90,
+    omega: float = GARCH_OMEGA,
+    alpha: float = GARCH_ALPHA,
+    beta: float = GARCH_BETA,
 ) -> pd.Series:
     """Compute a transparent GARCH(1,1) conditional variance path.
 
@@ -23,6 +28,9 @@ def garch_11_variance(
     clean_returns = returns.dropna()
     if clean_returns.empty:
         raise ValueError("returns cannot be empty")
+    logger.info("Computing GARCH variance for %d observations", len(clean_returns))
+    if alpha + beta >= 1:
+        logger.warning("alpha + beta >= 1: model may not be stable")
 
     variances = np.empty(len(clean_returns))
     variances[0] = clean_returns.var(ddof=1) if len(clean_returns) > 1 else omega / (1 - alpha - beta)

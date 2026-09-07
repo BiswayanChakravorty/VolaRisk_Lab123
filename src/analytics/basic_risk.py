@@ -5,7 +5,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-TRADING_DAYS = 252
+from src.config import TRADING_DAYS
 
 
 def log_returns(prices: pd.Series | pd.DataFrame) -> pd.Series | pd.DataFrame:
