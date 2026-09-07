@@ -104,6 +104,10 @@ make test
 make run
 ```
 
+## GitHub Pages demo
+
+The `github-pages-demo` branch contains a separate, fully client-side demo that can be deployed to GitHub Pages. It includes interactive scenario controls, charts, the same core risk calculations, CSV upload, and report download without requiring Python, a server, Yahoo Finance access, or an API key. See [`docs/GITHUB_PAGES_DEMO.md`](docs/GITHUB_PAGES_DEMO.md) for the one-time Pages setup.
+
 
 ## Roadmap
 
@@ -111,4 +115,3 @@ make run
 - Add portfolio-level risk attribution and marginal contribution to risk.
 - Add CSV upload support to the dashboard.
 - Add a research notebook comparing static rolling beta vs. Kalman beta.
-

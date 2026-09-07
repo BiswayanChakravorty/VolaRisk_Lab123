@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VolaRisk Lab — interactive browser-based portfolio risk analytics demo." />
+  <title>VolaRisk Lab | Risk Intelligence Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="VolaRisk Lab home"><span class="brand-mark">V</span><span>VolaRisk <em>Lab</em></span></a>
+      <div class="topbar-meta"><span class="live-dot"></span><span>Client-side demo</span><a href="https://github.com/BiswayanChakravorty/VolaRisk_Lab123" target="_blank" rel="noreferrer">View source ↗</a></div>
+    </header>
+    <main id="top">
+      <section class="hero">
+        <div><p class="eyebrow">QUANTITATIVE RISK ENGINE <span>·</span> v1.0</p><h1>See the risk<br /><span>behind the return.</span></h1><p class="hero-copy">Explore volatility, drawdown, GARCH clustering, and dynamic beta in one focused workspace. No server, API key, or login required — the entire demo runs in your browser.</p></div>
+        <div class="hero-stat"><span class="stat-label">MODEL STATUS</span><strong>READY</strong><small>4 analytics engines online</small></div>
+      </section>
+      <section class="control-panel" aria-label="Analysis controls">
+        <div class="control-heading"><div><p class="eyebrow">ANALYSIS CONFIGURATION</p><h2>Build your scenario</h2></div><button id="reset-btn" class="ghost-button">Reset defaults</button></div>
+        <div class="controls-grid">
+          <label>Assets<select id="asset-select"><option value="tech">Tech Leaders</option><option value="balanced">Balanced Portfolio</option><option value="volatile">High Beta Basket</option></select></label>
+          <label>Observation window<select id="window-select"><option value="60">60 trading days</option><option value="120" selected>120 trading days</option><option value="252">1 year · 252 days</option></select></label>
+          <label>Market proxy<select id="market-select"><option value="SPY">S&amp;P 500 · SPY</option><option value="QQQ">Nasdaq 100 · QQQ</option></select></label>
+          <button id="run-btn" class="primary-button"><span>Run risk analysis</span><span class="arrow">→</span></button>
+        </div>
+        <div class="upload-row"><span class="upload-icon">↑</span><span>Have your own data?</span><label class="upload-link" for="csv-input">Upload CSV <input id="csv-input" type="file" accept=".csv,text/csv" /></label><span class="upload-hint">Expected columns: Date, Asset, Market</span></div>
+      </section>
+      <div id="notice" class="notice" role="status" hidden></div>
+      <section class="dashboard-section">
+        <div class="section-header"><div><p class="eyebrow">PORTFOLIO SNAPSHOT <span>·</span> <span id="as-of">120 DAYS</span></p><h2 id="scenario-title">Tech Leaders</h2></div><div class="section-actions"><span class="updated">● Updated just now</span><button id="download-btn" class="ghost-button">Download report ↓</button></div></div>
+        <div id="metric-grid" class="metric-grid"></div>
+        <div class="chart-grid"><article class="chart-card chart-wide"><div class="card-heading"><div><span class="card-kicker">01 / PRICE PATH</span><h3>Indexed performance</h3></div><span class="legend" id="price-legend"></span></div><div class="chart-wrap"><canvas id="price-chart" aria-label="Indexed price performance chart"></canvas></div></article><article class="chart-card"><div class="card-heading"><div><span class="card-kicker">02 / VOLATILITY</span><h3>Rolling risk profile</h3></div><span class="chart-badge">ANNUALIZED</span></div><div class="chart-wrap"><canvas id="vol-chart" aria-label="Rolling volatility chart"></canvas></div></article><article class="chart-card"><div class="card-heading"><div><span class="card-kicker">03 / DYNAMIC BETA</span><h3>Kalman state estimate</h3></div><span class="chart-badge">STATE-SPACE</span></div><div class="chart-wrap"><canvas id="beta-chart" aria-label="Dynamic beta chart"></canvas></div></article></div>
+        <div class="lower-grid"><article class="table-card"><div class="card-heading"><div><span class="card-kicker">RISK BREAKDOWN</span><h3>Asset-level contribution</h3></div></div><div class="table-scroll"><table><thead><tr><th>Asset</th><th>Last price</th><th>Volatility</th><th>Drawdown</th><th>Beta</th><th>Risk signal</th></tr></thead><tbody id="asset-table"></tbody></table></div></article><article class="method-card"><span class="card-kicker">METHOD NOTES</span><h3>Transparent by design.</h3><p>Every output is calculated locally using the same risk primitives as the Python engine: log returns, sample volatility, peak-to-trough drawdown, GARCH(1,1), and a one-state Kalman filter.</p><div class="method-row"><span>Data source</span><strong id="data-source">Synthetic market data</strong></div><div class="method-row"><span>Privacy</span><strong>Nothing leaves your device</strong></div></article></div>
+      </section>
+    </main>
+    <footer><span>VOLARISK LAB / DYNAMIC PORTFOLIO RISK ENGINE</span><span>Built for research &amp; demonstration</span></footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

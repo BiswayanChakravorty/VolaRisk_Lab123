@@ -1,0 +1,6 @@
+{
+  "name": "volarisk-pages-demo",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "node --test tests/analytics.test.mjs"}
+}
